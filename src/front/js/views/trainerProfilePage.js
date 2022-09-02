@@ -5,7 +5,7 @@ import "../../styles/trainerProfilePage.css";
 
 function TrainerProfilePage() {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid mt-3">
       <div className="row">
         <div className="col-4">
           <div className="row">

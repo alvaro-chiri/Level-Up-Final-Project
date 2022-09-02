@@ -4,7 +4,7 @@ import "../../styles/loggedinnavbar.css";
 
 export const LoggedInNavbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
       <div className="container-fluid">
         <Link to="/">
           <span className="navbar-brand">LVL UP</span>
