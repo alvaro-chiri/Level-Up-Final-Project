@@ -1,10 +1,6 @@
-import React from 'react'
-import { LoginForm } from '../component/loginForm.js'
-
+import React from "react";
+import { SignUpForm } from "../component/signUPForm";
 
 export const CompTestPage = () => {
-  return (
-    <LoginForm />
-  )
-}
-
+  return <SignUpForm />;
+};
