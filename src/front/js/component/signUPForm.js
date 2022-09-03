@@ -9,25 +9,23 @@ export const SignUpForm = () => {
   const [zipCode, setZipCode] = useState("");
   const [trainerType, setTrainerType] = useState("0");
 
-  async function onSubmit() {
+  async function onSubmit(e){
     e.preventDefault();
     const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
       method: "POST",
-      body:{
-        "firstname":firstname,
-        "lastname":lastname,
-        "email":email,
-        "password":password,
-        "zipcode":zipCode,
-        "trainertype":trainerType
-        
-      }
-  
+      body: {
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password,
+        zipcode: zipCode,
+        trainertype: trainerType,
+      },
     });
     const payload = await response.json();
     return payload.results;
   }
-  
+
   return (
     <>
       <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
@@ -105,7 +103,7 @@ export const SignUpForm = () => {
                 </div>
 
                 <div class="p-t-10">
-                  <button onClick = { onSubmit} class="button-01" type="submit">
+                  <button onChange={e => onSubmit(e)} class="button-01" type="submit">
                     Submit
                   </button>
                 </div>
