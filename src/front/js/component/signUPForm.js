@@ -14,16 +14,16 @@ export const SignUpForm = () => {
     const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
       method: "POST",
       body: {
-        firstname: { firstname },
-        lastname: { lastname },
-        email: { email },
-        password: { password },
-        zipcode: { zipCode },
-        trainertype: { trainerType },
+        firstname: "firstname",
+        lastname: "lastname",
+        email: "email",
+        password: "password",
+        zipcode: "zipCode",
+        trainertype: "trainertype",
       },
     });
     const payload = await response.json();
-    return payload.results;
+    return payload.result;
   }
 
   return (
@@ -42,7 +42,9 @@ export const SignUpForm = () => {
                     placeholder="First Name"
                     name="firstname"
                     value={firstname}
-                    onChange={(e) => setFirstname(e.target.value)}
+                    onChange={(e) => {
+                      setFirstname(e.target.value);
+                    }}
                   />
                 </div>
                 <div class="input-group">
@@ -52,7 +54,9 @@ export const SignUpForm = () => {
                     placeholder="Last Name"
                     name="Lastname"
                     value={lastname}
-                    onChange={(e) => setLastname(e.target.value)}
+                    onChange={(e) => {
+                      setLastname(e.target.value);
+                    }}
                   />
                 </div>
                 <div class="input-group">
@@ -62,7 +66,9 @@ export const SignUpForm = () => {
                     placeholder="Email"
                     name="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
                   />
                 </div>
                 <div class="input-group">
@@ -72,7 +78,9 @@ export const SignUpForm = () => {
                     placeholder="Password"
                     name="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
                   />
                 </div>
 
@@ -83,7 +91,9 @@ export const SignUpForm = () => {
                     placeholder="Zip code"
                     name="zip code"
                     value={zipCode}
-                    onChange={(e) => setZipCode(e.target.value)}
+                    onChange={(e) => {
+                      setZipCode(e.target.value);
+                    }}
                   />
                 </div>
                 <div class="input-group">
@@ -91,7 +101,9 @@ export const SignUpForm = () => {
                   <select
                     class="form-select"
                     value={trainerType}
-                    onChange={(e) => setTrainerType(e.target.value)}
+                    onChange={(e) => {
+                      setTrainerType(e.target.value);
+                    }}
                   >
                     <option value="0">Choose...</option>
                     <option value="1">Personal Trainer</option>
@@ -104,7 +116,9 @@ export const SignUpForm = () => {
 
                 <div class="p-t-10">
                   <button
-                    onChange={(e) => onSubmit(e)}
+                    onChange={(e) => {
+                      onSubmit(e);
+                    }}
                     class="button-01"
                     type="submit"
                   >
