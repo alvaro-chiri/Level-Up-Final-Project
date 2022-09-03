@@ -13,12 +13,12 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
-    firstname = db.Column(db.String(40), unique=True, nullable=False)
-    lastname = db.Column(db.String(40), unique=True, nullable=False)
+    firstname = db.Column(db.String(40), unique=False, nullable=False)
+    lastname = db.Column(db.String(40), unique=False, nullable=False)
     email = db.Column(db.String(40), unique=True, nullable=False)
     password = db.Column(db.String(12), unique=False, nullable=False)
-    zipcode = db.Column(db.String(40), unique=True, nullable=False)
-    trainertype = db.Column(db.String(40), unique=True, nullable=False)
+    zipcode = db.Column(db.String(40), unique=False, nullable=False)
+    trainertype = db.Column(db.String(40), unique=False, nullable=False)
     is_active = db.Column(Boolean(), unique=False, nullable=True)
 
 
