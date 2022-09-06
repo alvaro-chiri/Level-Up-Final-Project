@@ -1,19 +1,37 @@
 from flask_sqlalchemy import SQLAlchemy
+import os
+import sys
+from sqlalchemy import Column, ForeignKey, Integer, String, Boolean
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+from sqlalchemy import create_engine
+
 
 db = SQLAlchemy()
 
+
+
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    id = db.Column(db.Integer, unique=True, primary_key=True)
+    firstname = db.Column(db.String(40), unique=False, nullable=False)
+    lastname = db.Column(db.String(40), unique=False, nullable=False)
+    email = db.Column(db.String(40), unique=True, nullable=False)
+    password = db.Column(db.String(40), unique=False, nullable=False)
+    zipcode = db.Column(db.String(40), unique=False, nullable=False)
+    trainertype = db.Column(db.String(40), unique=False, nullable=False)
+    is_active = db.Column(Boolean(), unique=False, nullable=True)
+
+
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return '<User %r>' % self.email
 
     def serialize(self):
         return {
             "id": self.id,
+            "firstname": self.firstname,
+            "lastname": self.lastname,
             "email": self.email,
-            # do not serialize the password, its a security breach
+            "zipcode": self.zipcode,
+            "trainertype": self.trainertype,
         }
