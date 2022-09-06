@@ -13,14 +13,17 @@ export const SignUpForm = () => {
     e.preventDefault();
     const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
       method: "POST",
-      body: {
-        firstname: "firstname",
-        lastname: "lastname",
-        email: "email",
-        password: "password",
-        zipcode: "zipCode",
-        trainertype: "trainertype",
+      headers: {
+        "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        firstname: firstname,
+        lastname: lastname,
+        email: email,
+        password: password,
+        zipcode: zipCode,
+        trainertype: trainerType,
+      }),
     });
     const payload = await response.json();
     return payload.result;
@@ -34,7 +37,7 @@ export const SignUpForm = () => {
             <div class="card-heading"></div>
             <div class="card-body">
               <h2 class="title">Registration Info</h2>
-              <form method="POST">
+              <form>
                 <div class="input-group">
                   <input
                     class="input--style-3"
@@ -106,17 +109,17 @@ export const SignUpForm = () => {
                     }}
                   >
                     <option value="0">Choose...</option>
-                    <option value="1">Personal Trainer</option>
+                    <option value="Personal Trainer">Personal Trainer</option>
 
-                    <option value="2">Golf Instructor</option>
-                    <option value="3">Tennis Instructor</option>
-                    <option value="3">Yoga Instructor</option>
+                    <option value="Golf Instructor">Golf Instructor</option>
+                    <option value="Tennis Instructor">Tennis Instructor</option>
+                    <option value="Yoga Instructor">Yoga Instructor</option>
                   </select>
                 </div>
 
                 <div class="p-t-10">
                   <button
-                    onChange={(e) => {
+                    onClick={(e) => {
                       onSubmit(e);
                     }}
                     class="button-01"
