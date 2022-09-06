@@ -22,7 +22,7 @@ export const LoginForm = () => {
                 <div class="input-group">
                   <input
                     class="input--style-3"
-                    type="text"
+                    type="password"
                     placeholder="Password"
                     name="password"
                   />
