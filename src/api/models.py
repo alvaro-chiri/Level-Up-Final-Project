@@ -19,6 +19,10 @@ class User(db.Model):
     password = db.Column(db.String(40), unique=False, nullable=False)
     zipcode = db.Column(db.String(40), unique=False, nullable=False)
     trainertype = db.Column(db.String(40), unique=False, nullable=False)
+    age = db.Column(db.String(), unique=False, nullable=True)
+    education = db.Column(db.String(), unique=False, nullable=True)
+    experience = db.Column(db.String(), unique=False, nullable=True)
+    aboutme = db.Column(db.String(), unique=False, nullable=True)
     is_active = db.Column(Boolean(), unique=False, nullable=True)
 
 
@@ -34,4 +38,9 @@ class User(db.Model):
             "email": self.email,
             "zipcode": self.zipcode,
             "trainertype": self.trainertype,
+            "age": self.age,
+            "education": self.education,
+            "experience": self.experience,
+            "about": self.aboutme,
         }
+

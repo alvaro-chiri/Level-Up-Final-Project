@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Trainerabout
 from api.utils import generate_sitemap, APIException
 import os
 
@@ -53,6 +53,8 @@ def get_single_user(user_id):
         return "user not found", 404
     else:
         return jsonify(user.serialize()), 200
+
+
      
 
      
@@ -72,3 +74,18 @@ def create_user():
     db.session.add(new_user)
     db.session.commit()
     return jsonify(request_body_user), 200
+
+@api.route('/user/<int:user_id>', methods=['POST'])
+def update_user(user_id):
+    user = User.query.filter_by(user_id=user_id).first()
+    request_body_user = request.get_json()
+    
+    if user is None:
+        return "user not found", 404
+    else:
+        user.age=request_body_user["age"]
+        user.education=request_body_user["education"]
+        user.experience=request_body_user["experience"]
+        user.aboutme=request_body_user["aboutme"]
+        db.session.commit()
+        return jsonify(user.serialize()), 200
