@@ -8,41 +8,28 @@ export const LoginForm = () => {
   const [emails, setEmails] = useState("");
   const [passwords, setPasswords] = useState("");
   const [update, setUpdate] = useState("A");
-  
-  const handleClick = () => {
+
+  const handleClick = (e) => {
+    e.preventDefault();
     const opts = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         email: emails,
-        password: passwords
-      })
-    }
-    fetch("https://3001-alvarochiri-levelupfina-2ahe4r1szy5.ws-us64.gitpod.io/api/token", opts)
-      .then(resp => {
-        if(resp.status == 200) return resp.json();
-        else alert("There has been an error");
-      })
-      // .then()
-      // .catch(error =>{
-      //   console.error("There was an error!!")
-      // })
-  }
-
-// useEffect(() => {
-//     const fn = async () => {
-//       const apiList = await Login();
-//       return console.log(apiList);
-//     };
-//     fn();
-//   }, [update]);
-
-// const handleClick = () => {
-//     const log = {email: emails, password: passwords};
-//     return Login(log), setUpdate("B");
-//   };
+        password: passwords,
+      }),
+    };
+    fetch(`${process.env.BACKEND_URL}/api/token`, opts).then((resp) => {
+      if(resp.status == 200) return resp.json();
+      else alert("There has been an error");
+    });
+    // .then()
+    // .catch(error =>{
+    //   console.error("There was an error!!")
+    // })
+  };
 
   return (
     <>
@@ -75,7 +62,11 @@ export const LoginForm = () => {
                 </div>
 
                 <div className="p-t-10">
-                  <button className="button-01" type="submit" onClick={handleClick}>
+                  <button
+                    className="button-01"
+                    type="submit"
+                    onClick={(e) => handleClick(e)}
+                  >
                     Submit
                   </button>
                 </div>
