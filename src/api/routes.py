@@ -4,9 +4,8 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+from argon2 import PasswordHasher
 import os
 
 from flask_migrate import Migrate
@@ -18,7 +17,7 @@ from flask_cors import CORS
 
 api = Blueprint('api', __name__)
 
-
+ph = PasswordHasher()
 
 @api.route('/hello', methods=['POST', 'GET'])
 def handle_hello():
@@ -61,12 +60,12 @@ def get_single_user(user_id):
 def create_user():
     request_body_user = request.get_json()
     new_user = User(
-    firstname = request_body_user["firstname"], 
-    lastname = request_body_user["lastname"],
-    email=request_body_user["email"], 
-    password=request_body_user["password"],
-    zipcode=request_body_user["zipcode"],
-    trainertype=request_body_user["trainertype"],
+    firstname = request_body_user['firstname'], 
+    lastname = request_body_user['lastname'],
+    email=request_body_user['email'], 
+    password=ph.hash(request_body_user['password']),
+    zipcode=request_body_user['zipcode'],
+    trainertype=request_body_user['trainertype'],
     )
     db.session.add(new_user)
     db.session.commit()
@@ -78,10 +77,13 @@ def create_user():
 # create_access_token() function is used to actually generate the JWT.
 @api.route("/token", methods=["POST"])
 def create_token():
-    email = request.json.get("email", None)
-    password = request.json.get("password", None)
-    if email != "test" or password != "test":
-        return jsonify({"msg": "Bad username or password"}), 401
-
-    access_token = create_access_token(identity=email)
+    payload = request.get_json()
+    user = User.query.filter(User.email == payload['email']).first()
+    if user is None:
+        return 'failed-auth', 401
+    try:
+        ph.verify(user.password, payload['password'])
+    except:
+        return 'failed-auth', 401
+    access_token = create_access_token(identity=user.id)
     return jsonify(access_token=access_token)

@@ -1,12 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/signupform.css";
+import { Login } from "../component/api";
 
 export const LoginForm = () => {
   const { store, actions } = useContext(Context);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [emails, setEmails] = useState("");
+  const [passwords, setPasswords] = useState("");
+  const [update, setUpdate] = useState("A");
+  
   const handleClick = () => {
     const opts = {
       method: 'POST',
@@ -14,21 +16,33 @@ export const LoginForm = () => {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        "email": email,
-        "password": password
+        email: emails,
+        password: passwords
       })
     }
-    fetch(`https://3001-alvarochiri-levelupfina-0l661ixlb7q.ws-us63.gitpod.io/api/token`, opts)
+    fetch("https://3001-alvarochiri-levelupfina-2ahe4r1szy5.ws-us64.gitpod.io/api/token", opts)
       .then(resp => {
-        if(resp.status === 200) return resp.json();
+        if(resp.status == 200) return resp.json();
         else alert("There has been an error");
       })
-      .then()
-      .catch(error =>{
-        console.error("There was an error!!")
-      })
+      // .then()
+      // .catch(error =>{
+      //   console.error("There was an error!!")
+      // })
   }
 
+// useEffect(() => {
+//     const fn = async () => {
+//       const apiList = await Login();
+//       return console.log(apiList);
+//     };
+//     fn();
+//   }, [update]);
+
+// const handleClick = () => {
+//     const log = {email: emails, password: passwords};
+//     return Login(log), setUpdate("B");
+//   };
 
   return (
     <>
@@ -38,15 +52,15 @@ export const LoginForm = () => {
             <div className="card-heading-login"></div>
             <div className="card-body">
               <h2 className="title">Login</h2>
-              <form method="POST">
+              <form /*removed method="POST"*/>
                 <div className="input-group">
                   <input
                     className="input--style-3"
                     type="text"
                     placeholder="Email"
                     name="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={emails}
+                    onChange={(e) => setEmails(e.target.value)}
                   />
                 </div>
                 <div className="input-group">
@@ -55,8 +69,8 @@ export const LoginForm = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    value={passwords}
+                    onChange={(e) => setPasswords(e.target.value)}
                   />
                 </div>
 
