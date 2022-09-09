@@ -77,7 +77,7 @@ def create_user():
 
 @api.route('/user/<int:user_id>', methods=['POST'])
 def update_user(user_id):
-    user = User.query.filter_by(user_id=user_id).first()
+    user = User.query.filter_by(id=user_id).first()
     request_body_user = request.get_json()
     
     if user is None:

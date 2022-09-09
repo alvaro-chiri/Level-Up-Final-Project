@@ -9,7 +9,7 @@ export const TrainersProfileInfo = () => {
 
   async function onSubmit(e) {
     e.preventDefault();
-    const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/user/1`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
