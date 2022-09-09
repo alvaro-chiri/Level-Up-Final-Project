@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import "../../styles/signupform.css";
 import { Login } from "../component/api";
 
@@ -9,27 +10,17 @@ export const LoginForm = () => {
   const [passwords, setPasswords] = useState("");
   const [update, setUpdate] = useState("A");
 
+  // redirect to homepage
+  const navigate = useNavigate();
+
+  console.log("This is your token", store.token);
   const handleClick = (e) => {
     e.preventDefault();
-    const opts = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: emails,
-        password: passwords,
-      }),
-    };
-    fetch(`${process.env.BACKEND_URL}/api/token`, opts).then((resp) => {
-      if(resp.status == 200) return resp.json();
-      else alert("There has been an error");
-    });
-    // .then()
-    // .catch(error =>{
-    //   console.error("There was an error!!")
-    // })
+    actions.login(emails, passwords);
   };
+
+  if (store.token && store.token != "" && store.token != undefined)
+    navigate.push("/");//this is where the navigate function is being used
 
   return (
     <>
@@ -39,38 +30,43 @@ export const LoginForm = () => {
             <div className="card-heading-login"></div>
             <div className="card-body">
               <h2 className="title">Login</h2>
-              <form /*removed method="POST"*/>
-                <div className="input-group">
-                  <input
-                    className="input--style-3"
-                    type="text"
-                    placeholder="Email"
-                    name="email"
-                    value={emails}
-                    onChange={(e) => setEmails(e.target.value)}
-                  />
-                </div>
-                <div className="input-group">
-                  <input
-                    className="input--style-3"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    value={passwords}
-                    onChange={(e) => setPasswords(e.target.value)}
-                  />
-                </div>
+              {store.token && store.token != "" && store.token != undefined ? (
+                "You are already logged in!"
+              ) : (
+                <div>
+                  <form /*removed method="POST"*/>
+                    <div className="input-group">
+                      <input
+                        className="input--style-3"
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                        value={emails}
+                        onChange={(e) => setEmails(e.target.value)}
+                      />
+                    </div>
+                    <div className="input-group">
+                      <input
+                        className="input--style-3"
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        value={passwords}
+                        onChange={(e) => setPasswords(e.target.value)}
+                      />
+                    </div>
 
-                <div className="p-t-10">
-                  <button
-                    className="button-01"
-                    type="submit"
-                    onClick={(e) => handleClick(e)}
-                  >
-                    Submit
-                  </button>
+                    <div className="p-t-10">
+                      <button
+                        className="button-01"
+                        onClick={(e) => handleClick(e)}
+                      >
+                        Submit
+                      </button>
+                    </div>
+                  </form>
                 </div>
-              </form>
+              )}
             </div>
           </div>
         </div>
