@@ -9,8 +9,6 @@ export const LoginForm = () => {
   const [emails, setEmails] = useState("");
   const [passwords, setPasswords] = useState("");
   const [update, setUpdate] = useState("A");
-
-  // redirect to homepage
   const navigate = useNavigate();
 
   console.log("This is your token", store.token);
@@ -20,7 +18,7 @@ export const LoginForm = () => {
   };
 
   if (store.token && store.token != "" && store.token != undefined)
-    navigate.push("/");//this is where the navigate function is being used
+    navigate("/");
 
   return (
     <>
