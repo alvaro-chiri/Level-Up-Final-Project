@@ -27,6 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 		console.log("Application just loaded syncing the session storage token")
 		if(token && token != "" && token != undefined) setStore({ token : token });
 	  },
+	  
+    logout: () => {
+		sessionStorage.removeItem("token");
+		console.log("Logged out of application")
+		setStore({ toke: null})
+	  },
 
       login: async (emails, passwords) => {
         const opts = {
