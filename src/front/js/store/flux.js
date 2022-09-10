@@ -31,7 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
     logout: () => {
 		sessionStorage.removeItem("token");
 		console.log("Logged out of application")
-		setStore({ toke: null})
+		setStore({ token: null})
 	  },
 
       login: async (emails, passwords) => {
