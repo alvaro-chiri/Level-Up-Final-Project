@@ -8,7 +8,10 @@ function TrainerProfilePage() {
     <div class="row py-8 px-4">
       <div class="col-xl-8 col-md-8 col-10 mx-auto">
         <div class="bg-white shadow rounded overflow-hidden">
-          <div class="px-4 pt-0 pb-4 bg-dark">
+          <div
+            class="px-4 pt-0 pb-4"
+            style={{ backgroundColor: "rgba(252, 60, 5" }}
+          >
             <div class="media align-items-end profile-header">
               <div class="profile mr-3">
                 <img
@@ -28,44 +31,75 @@ function TrainerProfilePage() {
             </div>
           </div>
 
-          <div class="py-4 px-4">
-            <div class="d-flex align-items-center justify-content-between mb-3">
-              <h5 class="mb-0">Recent photos</h5>
-              <a href="#" class="btn btn-link text-muted">
-                Show all
-              </a>
+          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+              >
+                About me
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="pills-profile-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+              >
+                Experience
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+              >
+                Reviews
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-home"
+              role="tabpanel"
+              aria-labelledby="pills-home-tab"
+            >
+              ...
             </div>
-            <div class="row">
-              <div class="col-lg-6 mb-2 pr-lg-1">
-                <img
-                  src="https://bootstrapious.com/i/snippets/sn-profile/img-3.jpg"
-                  alt=""
-                  class="img-fluid rounded shadow-sm"
-                />
-              </div>
-              <div class="col-lg-6 mb-2 pl-lg-1">
-                <img
-                  src="https://bootstrapious.com/i/snippets/sn-profile/img-4.jpg"
-                  alt=""
-                  class="img-fluid rounded shadow-sm"
-                />
-              </div>
-              <div class="col-lg-6 pr-lg-1 mb-2">
-                <img
-                  src="https://bootstrapious.com/i/snippets/sn-profile/img-5.jpg"
-                  alt=""
-                  class="img-fluid rounded shadow-sm"
-                />
-              </div>
-              <div class="col-lg-6 pl-lg-1">
-                <img
-                  src="https://bootstrapious.com/i/snippets/sn-profile/img-6.jpg"
-                  alt=""
-                  class="img-fluid rounded shadow-sm"
-                />
-              </div>
+            <div
+              class="tab-pane fade"
+              id="pills-profile"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab"
+            >
+              ...
             </div>
-            
+            <div
+              class="tab-pane fade"
+              id="pills-contact"
+              role="tabpanel"
+              aria-labelledby="pills-contact-tab"
+            >
+              ...
+            </div>
           </div>
         </div>
       </div>
