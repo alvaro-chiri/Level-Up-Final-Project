@@ -13,6 +13,7 @@ import { LoggedInNavbar } from "./component/loggedinnavbar";
 import TrainerProfilePage from "./views/trainerProfilePage";
 import SearchPage from "./views/searchpage";
 import { CompTestPage } from "./views/comptestpage";
+import { LoginForm } from "./views/loginForm";
 
 //create your first component
 const Layout = () => {
@@ -32,6 +33,7 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<TrainerProfilePage />} path="/trainerprofile" />
                         <Route element={<SearchPage />} path="/search/" />
+                        <Route element={<LoginForm />} path="/login/" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

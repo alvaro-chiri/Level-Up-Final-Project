@@ -16,7 +16,7 @@ class User(db.Model):
     firstname = db.Column(db.String(40), unique=False, nullable=False)
     lastname = db.Column(db.String(40), unique=False, nullable=False)
     email = db.Column(db.String(40), unique=True, nullable=False)
-    password = db.Column(db.String(40), unique=False, nullable=False)
+    password = db.Column(db.String(150), unique=False, nullable=False)
     zipcode = db.Column(db.String(40), unique=False, nullable=False)
     trainertype = db.Column(db.String(40), unique=False, nullable=False)
     age = db.Column(db.String(), unique=False, nullable=True)
