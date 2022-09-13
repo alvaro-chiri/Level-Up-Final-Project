@@ -35,16 +35,16 @@ export const SignUpForm = () => {
 
   return (
     <>
-      <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w780">
-          <div class="card card-3">
-            <div class="card-heading"></div>
-            <div class="card-body">
-              <h2 class="title">Registration Info</h2>
+      <div className="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div className="wrapper wrapper--w780">
+          <div className="card card-3">
+            <div className="card-heading"></div>
+            <div className="card-body">
+              <h2 className="title">Registration Info</h2>
               <form>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="First Name"
                     name="firstname"
@@ -54,9 +54,9 @@ export const SignUpForm = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="Last Name"
                     name="Lastname"
@@ -66,9 +66,9 @@ export const SignUpForm = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="Email"
                     name="email"
@@ -78,9 +78,9 @@ export const SignUpForm = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="password"
                     placeholder="Password"
                     name="password"
@@ -91,9 +91,9 @@ export const SignUpForm = () => {
                   />
                 </div>
 
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="Zip code"
                     name="zip code"
@@ -103,10 +103,10 @@ export const SignUpForm = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
-                  <label class="input-group-text">Trainer Type</label>
+                <div className="input-group">
+                  <label className="input-group-text">Trainer Type</label>
                   <select
-                    class="form-select"
+                    className="form-select"
                     value={trainerType}
                     onChange={(e) => {
                       setTrainerType(e.target.value);
@@ -121,12 +121,12 @@ export const SignUpForm = () => {
                   </select>
                 </div>
 
-                <div class="p-t-10">
+                <div className="p-t-10">
                     <button
                       onClick={(e) => {
                         onSubmit(e);
                       }}
-                      class="button-01"
+                      className="button-01"
                       type="submit"
                     >
                       Submit
