@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/signupform.css";
+import { useNavigate } from "react-router-dom";
 
 export const TrainersProfileInfo = () => {
   const [age, setAge] = useState("");
   const [education, setEducation] = useState("");
   const [aboutMe, setAboutMe] = useState("");
   const [experience, setExperience] = useState("");
+  const navigate = useNavigate();
+  const { store, actions } = useContext(Context); 
 
   async function onSubmit(e) {
     e.preventDefault();
-    const response = await fetch(`${process.env.BACKEND_URL}/api/user/1`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/api/user/${store.user_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,21 +26,21 @@ export const TrainersProfileInfo = () => {
       }),
     });
     const payload = await response.json();
-    return payload.result;
+    return payload.result, navigate("/trainerprofile");
   }
 
   return (
     <>
-      <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
-        <div class="wrapper wrapper--w780">
-          <div class="card card-3 trainer">
-            <div class="card-heading-about"></div>
-            <div class="card-body">
-              <h2 class="title">Tell us about you</h2>
+      <div className="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div className="wrapper wrapper--w780">
+          <div className="card card-3 trainer">
+            <div className="card-heading-about"></div>
+            <div className="card-body">
+              <h2 className="title">Tell us about you</h2>
               <form>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="How old are you?"
                     name="howoldareyou"
@@ -46,9 +50,9 @@ export const TrainersProfileInfo = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
+                <div className="input-group">
                   <input
-                    class="input--style-3"
+                    className="input--style-3"
                     type="text"
                     placeholder="Education"
                     name="education"
@@ -58,10 +62,10 @@ export const TrainersProfileInfo = () => {
                     }}
                   />
                 </div>
-                <div class="input-group">
-                  <label class="input-group-text">Experience</label>
+                <div className="input-group">
+                  <label className="input-group-text">Experience</label>
                   <select
-                    class="form-select"
+                    className="form-select"
                     value={experience}
                     onChange={(e) => {
                       setExperience(e.target.value);
@@ -76,10 +80,10 @@ export const TrainersProfileInfo = () => {
                   </select>
                 </div>
 
-                <div class="input-group">
-                  <span class="input-group-text"></span>
+                <div className="input-group">
+                  <span className="input-group-text"></span>
                   <textarea
-                    class="form-control"
+                    className="form-control"
                     placeholder="Tell us about you in a few words..."
                     aria-label="With textarea"
                     value={aboutMe}
@@ -89,12 +93,12 @@ export const TrainersProfileInfo = () => {
                   ></textarea>
                 </div>
 
-                <div class="p-t-10">
+                <div className="p-t-10">
                   <button
                     onClick={(e) => {
                       onSubmit(e);
                     }}
-                    class="button-01"
+                    className="button-01"
                     type="submit"
                   >
                     Submit

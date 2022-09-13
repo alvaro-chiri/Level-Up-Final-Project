@@ -5,7 +5,7 @@ import "../../styles/signupform.css";
 import { Login } from "../component/api";
 
 export const LoginForm = () => {
-  const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context); 
   const [emails, setEmails] = useState("");
   const [passwords, setPasswords] = useState("");
   const [update, setUpdate] = useState("A");
@@ -18,7 +18,7 @@ export const LoginForm = () => {
   };
 
   if (store.token && store.token != "" && store.token != undefined)
-    navigate("/");
+    navigate("/trainerprofile");
 
   return (
     <>

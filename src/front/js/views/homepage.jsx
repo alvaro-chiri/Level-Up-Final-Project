@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { Link } from "react-router-dom";
 
 import "../../styles/home.css";
 
@@ -39,9 +40,11 @@ export const Home = () => (
               >
                 Get Trained
               </button>
+              <Link to="/signup/">
               <button type="button" class="button-39">
                 Become a Trainer
               </button>
+              </Link>
             </div>
           </div>
         </div>

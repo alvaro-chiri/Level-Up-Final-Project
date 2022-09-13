@@ -14,6 +14,8 @@ import TrainerProfilePage from "./views/trainerProfilePage";
 import SearchPage from "./views/searchpage";
 import { CompTestPage } from "./views/comptestpage";
 import { LoginForm } from "./views/loginForm";
+import { SignUpForm } from "./views/signUPForm";
+import { TrainersProfileInfo } from "./views/traineraboutme";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +36,8 @@ const Layout = () => {
                         <Route element={<TrainerProfilePage />} path="/trainerprofile" />
                         <Route element={<SearchPage />} path="/search/" />
                         <Route element={<LoginForm />} path="/login/" />
+                        <Route element={<SignUpForm />} path="/signup/" />
+                        <Route element={<TrainersProfileInfo />} path="/traineraboutme/" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

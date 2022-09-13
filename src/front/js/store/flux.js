@@ -1,7 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-		token: null,
+      token: null,
+      user_id: null,
       message: null,
       demo: [
         {
@@ -22,17 +23,24 @@ const getState = ({ getStore, getActions, setStore }) => {
         getActions().changeColor(0, "green");
       },
 
-	  syncTokenFromSessionStore: () => {
-		const token = sessionStorage.getItem("token");
-		console.log("Application just loaded syncing the session storage token")
-		if(token && token != "" && token != undefined) setStore({ token : token });
-	  },
-	  
-    logout: () => {
-		sessionStorage.removeItem("token");
-		console.log("Logged out of application")
-		setStore({ token: null})
-	  },
+      setID: (id) => {
+        setStore({ user_id: id})
+      },
+
+      syncTokenFromSessionStore: () => {
+        const token = sessionStorage.getItem("token");
+        console.log(
+          "Application just loaded syncing the session storage token"
+        );
+        if (token && token != "" && token != undefined)
+          setStore({ token: token });
+      },
+
+      logout: () => {
+        sessionStorage.removeItem("token");
+        console.log("Logged out of application");
+        setStore({ token: null, user_id: null });
+      },
 
       login: async (emails, passwords) => {
         const opts = {
@@ -46,22 +54,24 @@ const getState = ({ getStore, getActions, setStore }) => {
           }),
         };
 
-        try{
-			const resp = await fetch(`${process.env.BACKEND_URL}/api/token`, opts)
-				if (resp.status !== 200){
-					alert("There has been an error");
-					return false;
-				}
-	
-				const data = await resp.json();
-				console.log("This came from the backend", data);
-				sessionStorage.setItem("token", data.access_token);
-				setStore({ token : data.access_token })
-				return true;
-			}
-		catch(error){
-			console.error("There has been an error login in.")
-		}
+        try {
+          const resp = await fetch(
+            `${process.env.BACKEND_URL}/api/token`,
+            opts
+          );
+          if (resp.status !== 200) {
+            alert("There has been an error");
+            return false;
+          }
+
+          const data = await resp.json();
+          console.log("This came from the backend", data);
+          sessionStorage.setItem("token", data.access_token);
+          setStore({ token: data.access_token });
+          return true;
+        } catch (error) {
+          console.error("There has been an error login in.");
+        }
       },
 
       getMessage: async () => {

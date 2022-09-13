@@ -71,7 +71,7 @@ def create_user():
     )
     db.session.add(new_user)
     db.session.commit()
-    return jsonify(request_body_user), 200
+    return new_user['id'], 200
 
 @api.route('/user/<int:user_id>', methods=['POST'])
 def update_user(user_id):

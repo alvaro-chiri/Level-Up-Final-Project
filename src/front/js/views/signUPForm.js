@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/signupform.css";
+import { useNavigate } from "react-router-dom";
 
 export const SignUpForm = () => {
   const [firstname, setFirstname] = useState("");
@@ -8,6 +10,8 @@ export const SignUpForm = () => {
   const [password, setPassword] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [trainerType, setTrainerType] = useState("0");
+  const navigate = useNavigate();
+  const { store, actions } = useContext(Context); 
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -25,8 +29,8 @@ export const SignUpForm = () => {
         trainertype: trainerType,
       }),
     });
-    const payload = await response.json();
-    return payload.result;
+    actions.setID(response.json())
+    return navigate("/traineraboutme");
   }
 
   return (
@@ -118,15 +122,15 @@ export const SignUpForm = () => {
                 </div>
 
                 <div class="p-t-10">
-                  <button
-                    onClick={(e) => {
-                      onSubmit(e);
-                    }}
-                    class="button-01"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
+                    <button
+                      onClick={(e) => {
+                        onSubmit(e);
+                      }}
+                      class="button-01"
+                      type="submit"
+                    >
+                      Submit
+                    </button>
                 </div>
               </form>
             </div>
