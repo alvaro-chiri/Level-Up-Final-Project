@@ -51,6 +51,8 @@ def get_single_user(user_id):
         return "user not found", 404
     else:
         return jsonify(user.serialize()), 200
+
+
      
 
      
@@ -71,6 +73,20 @@ def create_user():
     db.session.commit()
     return jsonify(request_body_user), 200
 
+@api.route('/user/<int:user_id>', methods=['POST'])
+def update_user(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    request_body_user = request.get_json()
+    
+    if user is None:
+        return "user not found", 404
+    else:
+        user.age=request_body_user["age"]
+        user.education=request_body_user["education"]
+        user.experience=request_body_user["experience"]
+        user.aboutme=request_body_user["aboutme"]
+        db.session.commit()
+        return jsonify(user.serialize()), 200
 #-------------------------------------------------#
 #this is to create a token which will be then saved to the backend for any user that is online - Alvaro C.
 # Create a route to authenticate your users and return JWTs. The

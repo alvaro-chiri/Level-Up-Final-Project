@@ -5,229 +5,199 @@ import "../../styles/trainerProfilePage.css";
 
 function TrainerProfilePage() {
   return (
-    <div className="container-fluid mt-3">
-      <div className="row">
-        <div className="col-4">
-          <div className="row">
-            <Image
-              className="img-fluid pfpTrainer"
-              src="https://simplyilm.com/wp-content/uploads/2017/08/temporary-profile-placeholder-1.jpg"
-            />
-          </div>
-          <div className="row interact-buttons">
-            <div className="col">
-              <button className="btn btn-danger">Message</button>
-            </div>
-            <div className="col">
-              <button className="btn btn-danger">Make an Appointment</button>
-            </div>
-          </div>
-        </div>
-        <div className="col">
-          <div className="row">
-            <div className="fs-1 text-center text-decoration-underline">
-              Alvaro Chirinos
-            </div>
-          </div>
-          <div className="row">
-            <ul className="nav nav-tabs" id="myTab" role="tablist">
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link active"
-                  id="about-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#about"
-                  type="button"
-                  role="tab"
-                  aria-controls="about"
-                  aria-selected="true"
-                >
-                  About this Trainer
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="socials-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#socials"
-                  type="button"
-                  role="tab"
-                  aria-controls="socials"
-                  aria-selected="true"
-                >
-                  Socials
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="schedule-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#schedule"
-                  type="button"
-                  role="tab"
-                  aria-controls="schedule"
-                  aria-selected="true"
-                >
-                  Schedule
-                </button>
-              </li>
-              <li className="nav-item" role="presentation">
-                <button
-                  className="nav-link"
-                  id="reviews-tab"
-                  data-bs-toggle="tab"
-                  data-bs-target="#reviews"
-                  type="button"
-                  role="tab"
-                  aria-controls="reviews"
-                  aria-selected="true"
-                >
-                  Reviews
-                </button>
-              </li>
-            </ul>
-            <div className="tab-content" id="myTabContent">
-              <div
-                className="tab-pane fade show active"
-                id="about"
-                role="tabpanel"
-                aria-labelledby="about-tab"
-              >
-                <div>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Quisque finibus vel dui eget tristique. Cras luctus sapien nec
-                  luctus laoreet. In metus sapien, dapibus quis ornare at,
-                  elementum vel magna. Proin mattis, magna sed hendrerit
-                  feugiat, odio velit mattis augue, quis pulvinar risus tellus
-                  quis dolor. Interdum et malesuada fames.
-                </div>
+    <div class="row py-8 px-4">
+      <div class="col-xl-8 col-md-8 col-10 mx-auto">
+        <div class="bg-white shadow rounded overflow-hidden">
+          <div
+            class="px-4 pt-0 pb-4"
+            style={{ backgroundColor: "rgba(252, 60, 5", padding: "0px" }}
+          >
+            <div class="media align-items-end profile-header">
+              <div class="profile mr-3">
+                <img
+                  src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg"
+                  alt="..."
+                  width="200"
+                  class="rounded mb-2 img-thumbnail profile"
+                  style={{ borderRadius: "100%" }}
+                />
               </div>
-              <div
-                className="tab-pane fade"
-                id="socials"
-                role="tabpanel"
-                aria-labelledby="socials-tab"
+              <div class="media-body mb-5 text-white">
+                <h4 class="mt-0 mb-0 name">John Doe</h4>
+                <p class="small mb-4" style={{ margin: "0px" }}>
+                  {" "}
+                  <i class="fa fa-map-marker mr-2 icon"></i>
+                  <span class="location">Fort Lauderdale, FL.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <ul
+            class="nav nav-pills mb-3"
+            style={{ display: "flex", flexDirection: "row", gap: "10px" }}
+            id="pills-tab"
+            role="tablist"
+          >
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="pills-home-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-home"
+                type="button"
+                role="tab"
+                aria-controls="pills-home"
+                aria-selected="true"
+                style={{ backgroundColor: "black", fontFamily: "roboto" }}
               >
-                <ul>
-                  <div className="fs-4">
-                    <a
-                      className="social-links"
-                      href="https://www.instagram.com/"
+                About me
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="pills-profile-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+              >
+                Experience
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+              >
+                Reviews
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-home"
+              role="tabpanel"
+              aria-labelledby="pills-home-tab"
+            >
+              .......
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-profile"
+              role="tabpanel"
+              aria-labelledby="pills-profile-tab"
+            >
+              ...
+            </div>
+            <div
+              class="tab-pane fade"
+              id="pills-contact"
+              role="tabpanel"
+              aria-labelledby="pills-contact-tab"
+            >
+              <div class="row text-center">
+                <div class="col-md-12">
+                  <div
+                    id="carouselBasicExample"
+                    class="carousel slide carousel-dark"
+                    data-mdb-ride="carousel"
+                  >
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <p class="lead font-italic mx-4 mx-md-5">
+                          "Lorem ipsum dolor sit amet, consectetur adipisicing
+                          elit. Fugit, error amet numquam iure provident
+                          voluptate esse quasi, voluptas nostrum quisquam!"
+                        </p>
+                        <div class="mt-5 mb-4">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp"
+                            class="rounded-circle img-fluid shadow-1-strong"
+                            alt="smaple image"
+                            width="100"
+                            height="100"
+                          />
+                        </div>
+                        <p class="text-muted mb-0">- Anna Morian</p>
+                      </div>
+
+                      <div class="carousel-item">
+                        <p class="lead font-italic mx-4 mx-md-5">
+                          "Neque cupiditate assumenda in maiores repudiandae
+                          mollitia adipisci maiores repudiandae mollitia
+                          consectetur adipisicing architecto elit sed adipiscing
+                          elit."
+                        </p>
+                        <div class="mt-5 mb-4">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp"
+                            class="rounded-circle img-fluid shadow-1-strong"
+                            alt="smaple image"
+                            width="100"
+                            height="100"
+                          />
+                        </div>
+                        <p class="text-muted mb-0">- Teresa May</p>
+                      </div>
+
+                      <div class="carousel-item">
+                        <p class="lead font-italic mx-4 mx-md-5">
+                          "Duis aute irure dolor in reprehenderit in voluptate
+                          velit esse cillum dolore eu fugiat nulla pariatur est
+                          laborum neque cupiditate assumenda in maiores."
+                        </p>
+                        <div class="mt-5 mb-4">
+                          <img
+                            src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                            class="rounded-circle img-fluid shadow-1-strong"
+                            alt="smaple image"
+                            width="100"
+                            height="100"
+                          />
+                        </div>
+                        <p class="text-muted mb-0">- Kate Allise</p>
+                      </div>
+                    </div>
+
+                    <button
+                      class="carousel-control-prev"
+                      type="button"
+                      data-mdb-target="#carouselBasicExample"
+                      data-mdb-slide="prev"
                     >
-                      <i class="fab fa-instagram" />
-                    </a>{" "}
-                    Alvarochiri
+                      <span
+                        class="carousel-control-prev-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                      class="carousel-control-next"
+                      type="button"
+                      data-mdb-target="#carouselBasicExample"
+                      data-mdb-slide="next"
+                    >
+                      <span
+                        class="carousel-control-next-icon"
+                        aria-hidden="true"
+                      ></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
                   </div>
-                  <div className="fs-4">
-                    <a className="social-links" href="https://www.youtube.com/">
-                      <i class="fab fa-youtube" />
-                    </a>{" "}
-                     youtube.com/Alvaro
-                  </div>
-                  <div className="fs-4">
-                    <a className="social-links" href="https://www.twitch.tv/">
-                      <i class="fab fa-twitch" />
-                    </a>{" "}
-                    twitch.tv/alvaroch
-                  </div>
-                  <div className="fs-4">
-                    <a className="social-links" href="https://www.twitter.com/">
-                      <i class="fab fa-twitter" />
-                    </a>{" "}
-                    twitter.com/alvaroch
-                  </div>
-                </ul>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="schedule"
-                role="tabpanel"
-                aria-labelledby="schedule-tab"
-              >
-                <table>
-            <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Name</th>
-              <th>Type of service</th>
-              <th>Message Button</th>
-            </tr>
-            <tr>
-              <td>9/30</td>
-              <td>7:00 PM</td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                  Alvaro Chirinos
-                </a>
-              </td>
-              <td>Soccer Training</td>
-              <td>
-                <button className="btn btn-outline-danger">Message</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10/1</td>
-              <td>10:00 AM</td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                  Nahuel Piecora
-                </a>
-              </td>
-              <td>Yoga</td>
-              <td>
-                <button className="btn btn-outline-danger">Message</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10/2</td>
-              <td>9:00 AM</td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                  Terry Welch
-                </a>
-              </td>
-              <td>Strength Training</td>
-              <td>
-                <button className="btn btn-outline-danger">Message</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10/7</td>
-              <td>7:00 PM</td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                  Alvaro Chirinos
-                </a>
-              </td>
-              <td>Soccer Training</td>
-              <td>
-                <button className="btn btn-outline-danger">Message</button>
-              </td>
-            </tr>
-            <tr>
-              <td>10/8</td>
-              <td>9:00 AM</td>
-              <td>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
-                  Nahuel Piecora
-                </a>
-              </td>
-              <td>Strength Training</td>
-              <td>
-                <button className="btn btn-outline-danger">Message</button>
-              </td>
-            </tr>
-          </table>
-              </div>
-              <div
-                className="tab-pane fade"
-                id="reviews"
-                role="tabpanel"
-                aria-labelledby="reviews-tab"
-              >
-                <div className="fs-1">Reviews: ⭐⭐⭐⭐⭐</div>
+                </div>
               </div>
             </div>
           </div>
