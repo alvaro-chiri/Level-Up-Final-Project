@@ -11,7 +11,7 @@ export const SignUpForm = () => {
   const [zipCode, setZipCode] = useState("");
   const [trainerType, setTrainerType] = useState("0");
   const navigate = useNavigate();
-  const { store, actions } = useContext(Context); 
+  const { store, actions } = useContext(Context);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -30,7 +30,7 @@ export const SignUpForm = () => {
       }),
     });
     const payload = await response.json();
-    actions.setID(response.json())
+    actions.setID(payload.id);
     return payload.result, navigate("/traineraboutme");
   }
 
@@ -123,15 +123,15 @@ export const SignUpForm = () => {
                 </div>
 
                 <div className="p-t-10">
-                    <button
-                      onClick={(e) => {
-                        onSubmit(e);
-                      }}
-                      className="button-01"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
+                  <button
+                    onClick={(e) => {
+                      onSubmit(e);
+                    }}
+                    className="button-01"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
                 </div>
               </form>
             </div>
