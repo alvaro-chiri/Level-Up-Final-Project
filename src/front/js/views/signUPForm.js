@@ -29,8 +29,9 @@ export const SignUpForm = () => {
         trainertype: trainerType,
       }),
     });
+    const payload = await response.json();
     actions.setID(response.json())
-    return navigate("/traineraboutme");
+    return payload.result, navigate("/traineraboutme");
   }
 
   return (
