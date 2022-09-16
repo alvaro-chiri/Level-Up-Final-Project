@@ -83,7 +83,7 @@ function TrainerProfilePage() {
                 aria-selected="false"
                 style={{ backgroundColor: "black", fontFamily: "roboto" }}
               >
-                Reviews
+                Availiability
               </button>
             </li>
           </ul>
@@ -94,8 +94,11 @@ function TrainerProfilePage() {
               role="tabpanel"
               aria-labelledby="pills-home-tab"
             >
-              <div class="panel" >
-                <div class="panel-body bio-graph-info" style={{ display: "flex", justifyContent: "center" }}>
+              <div class="panel">
+                <div
+                  class="panel-body bio-graph-info"
+                  style={{ display: "flex", justifyContent: "center" }}
+                >
                   <div class="row">
                     <div class="bio-row">
                       <p>
@@ -149,7 +152,7 @@ function TrainerProfilePage() {
               role="tabpanel"
               aria-labelledby="pills-contact-tab"
             >
-             
+              <TrainerScheduler />
             </div>
           </div>
         </div>

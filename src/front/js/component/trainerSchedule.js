@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "/workspace/Level-Up-Final-Project/src/front/styles/trainerSchedule.css";
 import React from "react";
 
 const timesAm = [
+  "04:00am",
+  "04:30am",
   "05:00am",
   "05:30am",
   "06:00am",
@@ -21,6 +23,16 @@ const timesAm = [
   "12:00am",
 ];
 const timesPm = [
+  "12:00pm",
+  "12:30pm",
+  "01:00pm",
+  "01:30pm",
+  "02:00pm",
+  "02:30pm",
+  "03:00pm",
+  "03:30pm",
+  "04:00pm",
+  "04:30pm",
   "05:00pm",
   "05:30pm",
   "06:00pm",
@@ -35,30 +47,95 @@ const timesPm = [
   "10:30pm",
   "11:00pm",
   "11:30pm",
-  "12:00pm",
 ];
 
 const weekDays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
 
 export const TrainerScheduler = () => {
-  const [date, setDate] = useState(new Date());
-  const [showTime, setShowTime] = useState(false);
+  const [selectedDays, setSelectedDays] = useState([]);
+  const [selectedTimes, setSelectedTimes] = useState([]);
+  useEffect(() => {
+    fetch(
+      "https://3001-alvarochiri-levelupfina-bwlmekss8i7.ws-us65.gitpod.io/api/user/1"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.daysavailable) {
+          //this is the column name has to verbatim.
+          setSelectedDays(data.daysavailable.split(","));
+        }
+        if (data.timesavailable) {
+          setSelectedTimes(data.timesavailable.split(","));
+        }
+      });
+  }, []);
+
+  const saveAvailability = () => {
+    fetch(
+      "https://3001-alvarochiri-levelupfina-bwlmekss8i7.ws-us65.gitpod.io/api/user/1/availability",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          daysavailable: selectedDays.join(","),
+          timesavailable: selectedTimes.join(","),
+        }),
+        headers: {
+          "content-type": "application/json",
+        },
+      }
+    );
+  };
+
+  const existsInArray = (value, values) => {
+    return values.includes(value);
+  };
+
+  const toggleSelectedDays = (day) => {
+    const daysSelected = [...selectedDays]; //makes copy of array
+    if (existsInArray(day, selectedDays)) {
+      const index = selectedDays.indexOf(day); //gives us index of the item
+      daysSelected.splice(index, 1); //removes that item from the array
+    } else {
+      daysSelected.push(day); // if it didnt exisists, this adds it to the array
+    }
+    setSelectedDays(daysSelected); // setting the state to the new array we created above
+  };
+
+  const toggleSelectedTimes = (time) => {
+    const timesSelected = [...selectedTimes];
+    if (existsInArray(time, selectedTimes)) {
+      const index = selectedTimes.indexOf(time);
+      timesSelected.splice(index, 1);
+    } else {
+      timesSelected.push(time);
+    }
+    setSelectedTimes(timesSelected);
+  };
 
   return (
     <div className="container">
       <div class="container text-center">
         <div class="col-7">
           <div class="col">
-            {" "}
-            <h1>Days</h1>{" "}
+            <h1>Days</h1>
           </div>
           <div
             class="col-12"
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            {" "}
             {weekDays.map((days) => (
-              <button className="button">{days}</button>
+              <button
+                key={days}
+                onClick={() => toggleSelectedDays(days)}
+                className="button"
+                style={{
+                  backgroundColor: existsInArray(days, selectedDays)
+                    ? "red"
+                    : "",
+                }}
+              >
+                {days}
+              </button>
             ))}
           </div>
           <div class="col">
@@ -74,7 +151,18 @@ export const TrainerScheduler = () => {
                     }}
                   >
                     {timesAm.map((time) => (
-                      <button className="button">{time}</button>
+                      <button
+                        key={time}
+                        onClick={() => toggleSelectedTimes(time)}
+                        className="button"
+                        style={{
+                          backgroundColor: existsInArray(time, selectedTimes)
+                            ? "red"
+                            : "",
+                        }}
+                      >
+                        {time}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -88,7 +176,18 @@ export const TrainerScheduler = () => {
                     }}
                   >
                     {timesPm.map((time) => (
-                      <button className="button">{time}</button>
+                      <button
+                        key={time}
+                        onClick={() => toggleSelectedTimes(time)}
+                        className="button"
+                        style={{
+                          backgroundColor: existsInArray(time, selectedTimes)
+                            ? "red"
+                            : "",
+                        }}
+                      >
+                        {time}
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -98,13 +197,7 @@ export const TrainerScheduler = () => {
         </div>
       </div>
 
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          gap: "2px",
-        }}
-      ></div>
+      <button onClick={saveAvailability}> Submit </button>
     </div>
   );
 };

@@ -46,7 +46,7 @@ def get_all_users():
 
 @api.route('/user/<int:user_id>', methods=['GET'])
 def get_single_user(user_id):
-    user = User.query.filter_by(user_id=user_id).first()
+    user = User.query.filter_by(id=user_id).first()
     if user is None:
         return "user not found", 404
     else:
@@ -87,6 +87,24 @@ def update_user(user_id):
         user.aboutme=request_body_user["aboutme"]
         db.session.commit()
         return jsonify(user.serialize()), 200
+
+
+@api.route('/user/<int:user_id>/availability', methods=['POST'])
+def update_availiability(user_id):
+    user = User.query.filter_by(id=user_id).first()
+    request_body_user = request.get_json()
+    if user is None:
+        return "user not found", 404
+    else:
+        user.daysavailable=request_body_user['daysavailable']
+        user.timesavailable=request_body_user['timesavailable']
+        db.session.commit()
+        return jsonify(user.serialize()), 200
+
+
+
+
+
 #-------------------------------------------------#
 #this is to create a token which will be then saved to the backend for any user that is online - Alvaro C.
 # Create a route to authenticate your users and return JWTs. The
