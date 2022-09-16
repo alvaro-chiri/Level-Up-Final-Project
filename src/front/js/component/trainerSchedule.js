@@ -38,15 +38,7 @@ const timesPm = [
   "12:00pm",
 ];
 
-const weekDays = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-  "Sunday",
-];
+const weekDays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
 
 export const TrainerScheduler = () => {
   const [date, setDate] = useState(new Date());
@@ -55,12 +47,15 @@ export const TrainerScheduler = () => {
   return (
     <div className="container">
       <div class="container text-center">
-        <div class="col-8">
+        <div class="col-7">
           <div class="col">
             {" "}
             <h1>Days</h1>{" "}
           </div>
-          <div class="col">
+          <div
+            class="col-12"
+            style={{ display: "flex", justifyContent: "space-between" }}
+          >
             {" "}
             {weekDays.map((days) => (
               <button className="button">{days}</button>
