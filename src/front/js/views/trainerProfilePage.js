@@ -1,7 +1,10 @@
 import React from "react";
 import Image from "react-bootstrap/Image";
 
+
 import "../../styles/trainerProfilePage.css";
+import { CalendarView } from "../component/calendar";
+import { TrainerScheduler } from "../component/trainerSchedule";
 
 function TrainerProfilePage() {
   return (
@@ -66,7 +69,7 @@ function TrainerProfilePage() {
                 aria-selected="false"
                 style={{ backgroundColor: "black", fontFamily: "roboto" }}
               >
-                Experience
+                Calendar
               </button>
             </li>
             <li className="nav-item" role="presentation">
@@ -100,7 +103,7 @@ function TrainerProfilePage() {
               role="tabpanel"
               aria-labelledby="pills-profile-tab"
             >
-              ...
+              <CalendarView/>
             </div>
             <div
               className="tab-pane fade"

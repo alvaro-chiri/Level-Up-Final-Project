@@ -1,6 +1,7 @@
 import React from "react";
-import { SignUpForm } from "./signUPForm.js";
+
+import { TrainerScheduler } from "../component/trainerSchedule";
 
 export const CompTestPage = () => {
-  return <SignUpForm />;
+  return <TrainerScheduler />;
 };
