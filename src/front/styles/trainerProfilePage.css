@@ -80,5 +80,65 @@ button:hover {
 .icon {
   font-size: 20px;
 }
+
+.bio-graph-info {
+  color: #89817e;
+}
+
+.bio-graph-info h1 {
+  font-size: 22px;
+  font-weight: 300;
+  margin: 0 0 20px;
+}
+
+.bio-row {
+  width: 50%;
+  float: left;
+  margin-bottom: 10px;
+  padding: 0 50px;
+}
+
+.bio-row p span {
+  width: 200px;
+  display: inline-block;
+}
+
+.bio-chart,
+.bio-desk {
+  float: left;
+}
+
+.bio-chart {
+  width: 40%;
+}
+
+.bio-desk {
+  width: 60%;
+}
+
+.bio-desk h4 {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.bio-desk h4.terques {
+  color: #4cc5cd;
+}
+
+.bio-desk h4.red {
+  color: #e26b7f;
+}
+
+.bio-desk h4.green {
+  color: #97be4b;
+}
+
+.bio-desk h4.purple {
+  color: #caa3da;
+}
+
+span {
+  font-size: 18px;
+}
 @import url(https://fonts.googleapis.com/css?family=Righteous);
 @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap);
