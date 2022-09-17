@@ -11,7 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { LoggedInNavbar } from "./component/loggedinnavbar";
 import TrainerProfilePage from "./views/trainerProfilePage";
-import SearchPage from "./views/searchpage";
+import { SearchPage } from "./views/searchpage";
 import { CompTestPage } from "./views/comptestpage";
 import { LoginForm } from "./views/loginForm";
 import { SignUpForm } from "./views/signUPForm";
