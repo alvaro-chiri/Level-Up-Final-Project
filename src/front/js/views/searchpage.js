@@ -1,9 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/searchpage.css";
 
 export const SearchPage = () => {
   const [zipcode, setZipcode] = useState("");
   const [distance, setDistance] = useState("");
+  const [nearbyZipcodes, setNearbyZipcodes] = useState(null)
+  const [trainers, setTrainers] = useState(null)
+  const [searchResults, setSearchResults] = useState(null)
+
+  useEffect(() => {
+    if (nearbyZipcodes != null && trainers != null) {
+      const filteredTrainers = trainers.filter((trainer) => {
+        let match = false
+        nearbyZipcodes.forEach(nearbyZipcode => {
+          console.log("nearby zip and trainer", nearbyZipcode, trainer)
+          if (nearbyZipcode.code === trainer.zipcode){
+            match = true
+          }
+          console.log("match", match)
+        });
+        return match
+      })
+      console.log("filtered trainers", filteredTrainers)
+      const trainerResults = filteredTrainers.map((filteredTrainer) => {
+        nearbyZipcodes.forEach(nearbyZipcode => {
+          if (nearbyZipcode.code === filteredTrainer.zipcode) {
+            filteredTrainer.distance = nearbyZipcode.distance
+          }
+        })
+        return filteredTrainer
+      })
+      console.log("trainer results", trainerResults)
+      setSearchResults(trainerResults)
+    }
+  },[nearbyZipcodes, trainers])
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -12,8 +42,18 @@ export const SearchPage = () => {
       return response.json();
     })
     .then((data) => {
-      console.log(data);
+      setNearbyZipcodes(data.results);
     });
+    fetch (`${process.env.BACKEND_URL}/api/user`).then((response) => {
+      console.log(response);
+      return response.json();
+    })
+    .then((data) => {
+      setTrainers(data);
+    });
+
+
+    
 
   }
   
@@ -48,6 +88,12 @@ export const SearchPage = () => {
           Submit
         </button>
       </form>
+      {
+        searchResults &&
+        searchResults.map((trainer) => {
+          return <div>{trainer.firstname} {trainer.distance}</div>
+        })
+      }
     </div>
   );
 };
