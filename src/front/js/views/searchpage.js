@@ -7,7 +7,7 @@ export const SearchPage = () => {
 
   const formSubmit = (e) => {
     e.preventDefault();
-    fetch (`https://www.zipcodeapi.com/rest/gw6pg1XpV4AsmGgY9oVMFlo8Kjjmh79SrZhrkcEDB44WLQFDjJO6ohLHaBlmtyV7/radius.json/${zipcode}/${distance}/mile`).then((response) => {
+    fetch (`https://app.zipcodebase.com/api/v1/radius?apikey=fd0a6080-368b-11ed-bbdb-c1eae6e869ff&code=${zipcode}&radius=${distance}&country=us`).then((response) => {
       console.log(response);
       return response.json();
     })
