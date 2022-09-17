@@ -24,6 +24,9 @@ class User(db.Model):
     experience = db.Column(db.String(), unique=False, nullable=True)
     aboutme = db.Column(db.String(), unique=False, nullable=True)
     is_active = db.Column(Boolean(), unique=False, nullable=True)
+    daysavailable = db.Column(db.String(), unique=False, nullable=True)
+    timesavailable = db.Column(db.String(), unique=False, nullable=True)
+    
 
 
 
@@ -42,5 +45,7 @@ class User(db.Model):
             "education": self.education,
             "experience": self.experience,
             "about": self.aboutme,
+            "daysavailable": self.daysavailable,
+            "timesavailable": self.timesavailable,
         }
 
