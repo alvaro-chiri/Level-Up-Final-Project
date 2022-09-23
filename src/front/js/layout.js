@@ -11,7 +11,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { LoggedInNavbar } from "./component/loggedinnavbar";
 import TrainerProfilePage from "./views/trainerProfilePage";
-import { SearchPage } from "./views/searchpage";
+import { SearchPage } from "./views/searchpage.jsx";
 import { CompTestPage } from "./views/comptestpage";
 import { LoginForm } from "./views/loginForm";
 import { SignUpForm } from "./views/signUPForm";
@@ -33,11 +33,10 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<CompTestPage />} path="/test" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<TrainerProfilePage />} path="/trainerprofile" />
+                        <Route element={<TrainerProfilePage />} path="/trainerprofile/:id" />
                         <Route element={<SearchPage />} path="/search/" />
                         <Route element={<LoginForm />} path="/login/" />
                         <Route element={<SignUpForm />} path="/signup/" />
-                        <Route element={<TrainersProfileInfo />} path="/traineraboutme/" />
                         <Route element={<TrainersProfileInfo />} path="/traineraboutme/" />
                         
                         

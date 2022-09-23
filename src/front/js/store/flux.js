@@ -4,6 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       user_id: null,
       message: null,
+      trainer: [],
       demo: [
         {
           title: "FIRST",
@@ -99,6 +100,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         //reset the global store
         setStore({ demo: demo });
+      },
+
+      //will get the information for the trainer profile after clicking on the button on the search page
+      getTrainerInfo: async (id) => {
+        try {
+          const response = await fetch(
+            `${process.env.BACKEND_URL}/api/user/${id}`
+          );
+          if (response.ok) {
+            const data = await response.json();
+            console.log("this is the consol log", data)
+            setStore({ trainer: data });
+            console.log(getStore().trainer);
+          }
+        } catch (error) {
+          throw Error(error);
+        }
+        //end of the getTrainerInfo
       },
     },
   };
