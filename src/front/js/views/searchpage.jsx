@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/searchpage.css";
-import { Card, Button, Col, Row } from "react-bootstrap"
+import { Button } from "react-bootstrap"
 
 export const SearchPage = () => {
   const [zipcode, setZipcode] = useState("");

@@ -114,13 +114,13 @@ export const TrainerScheduler = () => {
 
   return (
     <div className="container">
-      <div class="container text-center">
-        <div class="col-7">
-          <div class="col">
+      <div className="container text-center">
+        <div className="col-7">
+          <div className="col">
             <h1>Days</h1>
           </div>
           <div
-            class="col-12"
+            className="col-12"
             style={{ display: "flex", justifyContent: "space-between" }}
           >
             {weekDays.map((days) => (
@@ -138,10 +138,10 @@ export const TrainerScheduler = () => {
               </button>
             ))}
           </div>
-          <div class="col">
-            <div class="container text-center">
-              <div class="row">
-                <div class="col-6">
+          <div className="col">
+            <div className="container text-center">
+              <div className="row">
+                <div className="col-6">
                   <h1>AM Times</h1>
                   <div
                     style={{
@@ -166,7 +166,7 @@ export const TrainerScheduler = () => {
                     ))}
                   </div>
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                   <h1>PM Times</h1>
                   <div
                     style={{

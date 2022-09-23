@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "react-bootstrap/Image";
+import { useParams } from "react-router-dom";
 
 import "../../styles/trainerProfilePage.css";
 import { CalendarView } from "../component/calendar";
 import { TrainerScheduler } from "../component/trainerSchedule";
+import { Context } from "../store/appContext";
 
-function TrainerProfilePage() {
+//testing code
+const TrainerProfilePage  = () => {
+  const { store, actions } = useContext(Context)
+  const { id } = useParams();
+
+  useEffect(() => {
+    actions.getTrainerInfo(id);
+  }, []);
+// }
+
+// function TrainerProfilePage() {
   return (
     <div className="row py-8 px-4">
       <div className="col-xl-8 col-md-8 col-10 mx-auto">
@@ -25,7 +37,7 @@ function TrainerProfilePage() {
                 />
               </div>
               <div className="media-body mb-5 text-white">
-                <h4 className="mt-0 mb-0 name">John Doe</h4>
+                <h4 className="mt-0 mb-0 name">{store.trainer.firstname} {store.trainer.lastname}</h4>
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
@@ -94,40 +106,40 @@ function TrainerProfilePage() {
               role="tabpanel"
               aria-labelledby="pills-home-tab"
             >
-              <div class="panel">
+              <div className="panel">
                 <div
-                  class="panel-body bio-graph-info"
+                  className="panel-body bio-graph-info"
                   style={{ display: "flex", justifyContent: "center" }}
                 >
-                  <div class="row">
-                    <div class="bio-row">
+                  <div className="row">
+                    <div className="bio-row">
                       <p>
-                        <span>First Name </span>: John
+                        <span>First Name </span>: {store.trainer.firstname}
                       </p>
                     </div>
-                    <div class="bio-row">
+                    <div className="bio-row">
                       <p>
                         <span>Last Name </span>: Doe
                       </p>
                     </div>
-                    <div class="bio-row">
+                    <div className="bio-row">
                       <p>
                         <span>City</span>: Fort Lauderdale
                       </p>
                     </div>
 
-                    <div class="bio-row">
+                    <div className="bio-row">
                       <p>
                         <span>Occupation </span>: Personal Trainer
                       </p>
                     </div>
-                    <div class="bio-row">
+                    <div className="bio-row">
                       <p>
                         <span>Qualifications </span>: 14 Years experience,
                         Nutrition.
                       </p>
                     </div>
-                    <div class="bio-row">
+                    <div className="bio-row">
                       <p>
                         <span>Social Media </span>: IG: Johndoe123
                       </p>
