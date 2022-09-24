@@ -12,6 +12,7 @@ export const SignUpForm = () => {
   const [trainerType, setTrainerType] = useState("0");
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
+  
 
   async function onSubmit(e) {
     e.preventDefault();
