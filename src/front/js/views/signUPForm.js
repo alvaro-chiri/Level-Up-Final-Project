@@ -49,6 +49,7 @@ export const SignUpForm = () => {
                     type="text"
                     placeholder="First Name"
                     name="firstname"
+                    required
                     value={firstname}
                     onChange={(e) => {
                       setFirstname(e.target.value);
@@ -61,6 +62,7 @@ export const SignUpForm = () => {
                     type="text"
                     placeholder="Last Name"
                     name="Lastname"
+                    required
                     value={lastname}
                     onChange={(e) => {
                       setLastname(e.target.value);
@@ -73,6 +75,7 @@ export const SignUpForm = () => {
                     type="text"
                     placeholder="Email"
                     name="email"
+                    required
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
@@ -85,6 +88,7 @@ export const SignUpForm = () => {
                     type="password"
                     placeholder="Password"
                     name="password"
+                    required
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
@@ -98,6 +102,7 @@ export const SignUpForm = () => {
                     type="text"
                     placeholder="Zip code"
                     name="zip code"
+                    required
                     value={zipCode}
                     onChange={(e) => {
                       setZipCode(e.target.value);
@@ -105,7 +110,7 @@ export const SignUpForm = () => {
                   />
                 </div>
                 <div className="input-group">
-                  <label className="input-group-text">Trainer Type</label>
+                  <label className="input-group-text" required>Trainer Type</label>
                   <select
                     className="form-select"
                     value={trainerType}

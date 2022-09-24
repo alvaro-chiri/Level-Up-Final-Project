@@ -56,7 +56,7 @@ export const TrainerScheduler = () => {
   const [selectedTimes, setSelectedTimes] = useState([]);
   useEffect(() => {
     fetch(
-      "https://3001-alvarochiri-levelupfina-bwlmekss8i7.ws-us65.gitpod.io/api/user/1"
+      `${process.env.BACKEND_URL}/api/user/1`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -72,7 +72,7 @@ export const TrainerScheduler = () => {
 
   const saveAvailability = () => {
     fetch(
-      "https://3001-alvarochiri-levelupfina-bwlmekss8i7.ws-us65.gitpod.io/api/user/1/availability",
+      `${process.env.BACKEND_URL}/api/user/1/availability`,
       {
         method: "POST",
         body: JSON.stringify({
