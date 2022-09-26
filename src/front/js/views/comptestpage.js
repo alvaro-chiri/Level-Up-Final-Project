@@ -1,7 +1,7 @@
 import React from "react";
 
-import { TrainerScheduler } from "../component/trainerSchedule";
+import TrainerProfilePage from "./trainerProfilePage";
 
 export const CompTestPage = () => {
-  return <TrainerScheduler />;
+  return <TrainerProfilePage />;
 };

@@ -8,16 +8,16 @@ import { TrainerScheduler } from "../component/trainerSchedule";
 import { Context } from "../store/appContext";
 
 //testing code
-const TrainerProfilePage  = () => {
-  const { store, actions } = useContext(Context)
+const TrainerProfilePage = () => {
+  const { store, actions } = useContext(Context);
   const { id } = useParams();
 
   useEffect(() => {
     actions.getTrainerInfo(id);
   }, []);
-// }
+  // }
 
-// function TrainerProfilePage() {
+  // function TrainerProfilePage() {
   return (
     <div className="row py-8 px-4">
       <div className="col-xl-8 col-md-8 col-10 mx-auto">
@@ -32,12 +32,14 @@ const TrainerProfilePage  = () => {
                   src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg"
                   alt="..."
                   width="200"
-                  className="rounded mb-2 img-thumbnail profile"
+                  className="mb-2 img-thumbnail profile"
                   style={{ borderRadius: "100%" }}
                 />
               </div>
               <div className="media-body mb-5 text-white">
-                <h4 className="mt-0 mb-0 name">{store.trainer.firstname} {store.trainer.lastname}</h4>
+                <h4 className="mt-0 mb-0 name">
+                  {store.trainer.firstname} {store.trainer.lastname}
+                </h4>
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
@@ -63,7 +65,11 @@ const TrainerProfilePage  = () => {
                 role="tab"
                 aria-controls="pills-home"
                 aria-selected="true"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
               >
                 About me
               </button>
@@ -78,7 +84,11 @@ const TrainerProfilePage  = () => {
                 role="tab"
                 aria-controls="pills-profile"
                 aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
               >
                 Calendar
               </button>
@@ -93,9 +103,32 @@ const TrainerProfilePage  = () => {
                 role="tab"
                 aria-controls="pills-contact"
                 aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
               >
                 Availiability
+              </button>
+            </li>
+            <li className="nav-item" role="presentation">
+              <button
+                className="nav-link"
+                id="contact"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-profile"
+                type="button"
+                role="tab"
+                aria-controls="pills-profile"
+                aria-selected="false"
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
+              >
+                Contact me
               </button>
             </li>
           </ul>
@@ -154,15 +187,15 @@ const TrainerProfilePage  = () => {
               id="pills-profile"
               role="tabpanel"
               aria-labelledby="pills-profile-tab"
-              style={{ display: "flex", justifyContent: "center" }}
             >
               <CalendarView />
             </div>
             <div
-              className="tab-pane fade"
+              className="tab-pane fade scroll"
               id="pills-contact"
               role="tabpanel"
               aria-labelledby="pills-contact-tab"
+              style={{ height: "500px", overflowY: "auto" }}
             >
               <TrainerScheduler />
             </div>
@@ -171,6 +204,6 @@ const TrainerProfilePage  = () => {
       </div>
     </div>
   );
-}
+};
 
 export default TrainerProfilePage;
