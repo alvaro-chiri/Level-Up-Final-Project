@@ -8,7 +8,7 @@ export const LoggedInNavbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark sticky-top">
       <div className="container-fluid">
         <Link to="/" style={{textDecoration: "none"}}>
           <span className="navbar-brand">Level Up</span>
