@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Calendar from "react-calendar";
 import "/workspace/Level-Up-Final-Project/src/front/styles/trainerSchedule.css";
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const timesAm = [
   "04:00am",
@@ -52,11 +53,15 @@ const timesPm = [
 const weekDays = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
 
 export const TrainerScheduler = () => {
+  const { id } = useParams();
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedTimes, setSelectedTimes] = useState([]);
+
+  console.log("this is for the scheduler", id)
+
   useEffect(() => {
     fetch(
-      `${process.env.BACKEND_URL}/api/user/1`
+      `${process.env.BACKEND_URL}/api/user/${id}`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -72,7 +77,7 @@ export const TrainerScheduler = () => {
 
   const saveAvailability = () => {
     fetch(
-      `${process.env.BACKEND_URL}/api/user/1/availability`,
+      `${process.env.BACKEND_URL}/api/user/${id}/availability`,
       {
         method: "POST",
         body: JSON.stringify({
