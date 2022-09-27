@@ -7,6 +7,7 @@ import { CalendarView } from "../component/calendar";
 import { TrainerScheduler } from "../component/trainerSchedule";
 import { Context } from "../store/appContext";
 
+
 //testing code
 const TrainerProfilePage  = () => {
   const { store, actions } = useContext(Context)
@@ -16,7 +17,9 @@ const TrainerProfilePage  = () => {
     actions.getTrainerInfo(id);
   }, []);
 // }
-
+console.log("this should be true", sessionStorage.getItem("user_id") === id)
+console.log("this is the id", id)
+console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
 // function TrainerProfilePage() {
   return (
     <div className="row py-8 px-4">
@@ -69,7 +72,7 @@ const TrainerProfilePage  = () => {
               </button>
             </li>
             {/* if statement */}
-            {!store.token ? (
+            {sessionStorage.getItem("user_id") == store.trainer.id ? (
               <li className="nav-item" role="presentation">
               <button
                 className="nav-link"

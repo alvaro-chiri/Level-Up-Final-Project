@@ -199,4 +199,3 @@ html{
 .menu-toggle.active .cross span:last-child{
 	transform:translateY(-50%) rotate(-45deg) scaleX(1);
 }
-  
