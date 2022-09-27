@@ -12,13 +12,15 @@ export const LoginForm = () => {
   const navigate = useNavigate();
 
   console.log("This is your token", store.token);
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    actions.login(emails, passwords);
+    let login = await actions.login(emails, passwords);
+    if (login){
+      if (store.token && store.token != "" && store.token != undefined)
+        navigate(`/trainerprofile/${store.user_id}`);
+    }
   };
-
-  if (store.token && store.token != "" && store.token != undefined)
-    navigate("/trainerprofile");
+  
 
   return (
     <>

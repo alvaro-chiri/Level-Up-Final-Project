@@ -68,7 +68,24 @@ const TrainerProfilePage  = () => {
                 About me
               </button>
             </li>
-            <li className="nav-item" role="presentation">
+            {/* if statement */}
+            {!store.token ? (
+              <li className="nav-item" role="presentation">
+              <button
+                className="nav-link"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+              >
+                Availiability
+              </button>
+            </li>) : (
+              <li className="nav-item" role="presentation">
               <button
                 className="nav-link"
                 id="pills-profile-tab"
@@ -83,21 +100,7 @@ const TrainerProfilePage  = () => {
                 Calendar
               </button>
             </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className="nav-link"
-                id="pills-contact-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-contact"
-                type="button"
-                role="tab"
-                aria-controls="pills-contact"
-                aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
-              >
-                Availiability
-              </button>
-            </li>
+            )}            
           </ul>
           <div className="tab-content" id="pills-tabContent">
             <div

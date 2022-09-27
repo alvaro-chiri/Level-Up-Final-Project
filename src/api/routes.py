@@ -135,4 +135,4 @@ def create_token():
     except:
         return 'failed-auth', 401
     access_token = create_access_token(identity=user.id)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token, user_id=user.id)

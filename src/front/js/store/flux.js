@@ -39,6 +39,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       logout: () => {
         sessionStorage.removeItem("token");
+        sessionStorage.removeItem("user_id");
         console.log("Logged out of application");
         setStore({ token: null, user_id: null });
       },
@@ -68,7 +69,9 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await resp.json();
           console.log("This came from the backend", data);
           sessionStorage.setItem("token", data.access_token);
+          sessionStorage.setItem("user_id", data.user_id);
           setStore({ token: data.access_token });
+          setStore({ user_id: data.user_id });
           return true;
         } catch (error) {
           console.error("There has been an error login in.");

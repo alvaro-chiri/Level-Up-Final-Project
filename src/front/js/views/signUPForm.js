@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/signupform.css";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export const SignUpForm = () => {
   const [firstname, setFirstname] = useState("");
@@ -12,10 +13,15 @@ export const SignUpForm = () => {
   const [trainerType, setTrainerType] = useState("0");
   const navigate = useNavigate();
   const { store, actions } = useContext(Context);
+  const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm()
   
 
   async function onSubmit(e) {
-    e.preventDefault();
+    // e.preventDefault();
     const response = await fetch(`${process.env.BACKEND_URL}/api/user`, {
       method: "POST",
       headers: {
@@ -43,13 +49,14 @@ export const SignUpForm = () => {
             <div className="card-heading"></div>
             <div className="card-body">
               <h2 className="title">Registration Info</h2>
-              <form>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="input-group">
                   <input
                     className="input--style-3"
                     type="text"
                     placeholder="First Name"
                     name="firstname"
+                    id="firstname"
                     required
                     value={firstname}
                     onChange={(e) => {
@@ -130,9 +137,9 @@ export const SignUpForm = () => {
 
                 <div className="p-t-10">
                   <button
-                    onClick={(e) => {
-                      onSubmit(e);
-                    }}
+                    // onClick={(e) => {
+                    //   onSubmit(e);
+                    // }}
                     className="button-01"
                     type="submit"
                   >
