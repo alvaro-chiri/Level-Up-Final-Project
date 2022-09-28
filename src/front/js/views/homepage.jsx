@@ -18,7 +18,7 @@ export const Home = () => (
           <div className="col-lg-6  text-center text-lg-start">
             <img
               src="https://images.pexels.com/photos/791763/pexels-photo-791763.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              class="img-fluid"
+              className="img-fluid"
               alt=""
               data-aos="zoom-out"
               data-aos-delay="300"
@@ -42,7 +42,7 @@ export const Home = () => (
                 Get Trained
               </button></Link>
               <Link to="/signup/" style={{textDecoration: "none"}}>
-              <button type="button" class="button-39">
+              <button type="button" className="button-39">
                 Become a Trainer
               </button>
               </Link>
