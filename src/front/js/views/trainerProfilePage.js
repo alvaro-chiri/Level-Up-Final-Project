@@ -44,7 +44,7 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
-                  <span className="location">Fort Lauderdale, FL.</span>
+                  <span className="location"> {store.trainer.zipcode}</span>
                 </p>
               </div>
             </div>
@@ -85,7 +85,7 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                 aria-selected="false"
                 style={{ backgroundColor: "black", fontFamily: "roboto" }}
               >
-                Availiability
+                Availability
               </button>
             </li>) : (
               <li className="nav-item" role="presentation">
@@ -125,24 +125,23 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Last Name </span>: Doe
+                        <span>Last Name </span>: {store.trainer.lastname}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>City</span>: Fort Lauderdale
+                        <span>Location</span>: {store.trainer.zipcode}
                       </p>
                     </div>
 
                     <div className="bio-row">
                       <p>
-                        <span>Occupation </span>: Personal Trainer
+                        <span>Occupation </span>: {store.trainer.trainertype}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Qualifications </span>: 14 Years experience,
-                        Nutrition.
+                        <span>Qualifications </span>: {store.trainer.experience}, {store.trainer.education}.
                       </p>
                     </div>
                     <div className="bio-row">

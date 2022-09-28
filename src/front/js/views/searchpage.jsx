@@ -9,6 +9,7 @@ export const SearchPage = () => {
   const [nearbyZipcodes, setNearbyZipcodes] = useState(null);
   const [trainers, setTrainers] = useState(null);
   const [searchResults, setSearchResults] = useState(null);
+  const [trainertype, setTrainertype] = useState("");
 
   useEffect(() => {
     if (nearbyZipcodes != null && trainers != null) {
@@ -33,7 +34,10 @@ export const SearchPage = () => {
         return filteredTrainer;
       });
       console.log("trainer results", trainerResults);
-      setSearchResults(trainerResults);
+      const trainerResultsWithType = trainerResults.filter((trainerResult) => {
+        return trainerResult.trainertype == trainertype
+      })
+      setSearchResults(trainerResultsWithType);
     }
   }, [nearbyZipcodes, trainers]);
 
@@ -91,6 +95,22 @@ export const SearchPage = () => {
                       onChange={(e) => setDistance(e.target.value)}
                     />
                   </div>
+                  <div className="col">
+                  <select
+                    className="form-select"
+                    value={trainertype}
+                    onChange={(e) => {
+                      setTrainertype(e.target.value);
+                    }}
+                  >
+                    <option value="0">Choose...</option>
+                    <option value="Personal Trainer">Personal Trainer</option>
+
+                    <option value="Golf Instructor">Golf Instructor</option>
+                    <option value="Tennis Instructor">Tennis Instructor</option>
+                    <option value="Yoga Instructor">Yoga Instructor</option>
+                  </select>
+                </div>
                   {/* end test */}
                   {/* <div className="col">
                     <label htmlFor="inputZipCode" className="form-label">
@@ -142,6 +162,7 @@ export const SearchPage = () => {
                         <h3>
                           {trainer.firstname} {trainer.lastname}
                         </h3>
+                        <h4>{trainer.trainertype}</h4>
                         <h6> Distance: {trainer.distance} miles away</h6>
                         </div>
                         <div className="col">
