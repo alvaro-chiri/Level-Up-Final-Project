@@ -1,3 +1,5 @@
+// 
+
 import React, { useContext, useEffect } from "react";
 import Image from "react-bootstrap/Image";
 import { useParams } from "react-router-dom";
@@ -7,20 +9,19 @@ import { CalendarView } from "../component/calendar";
 import { TrainerScheduler } from "../component/trainerSchedule";
 import { Context } from "../store/appContext";
 
-
 //testing code
-const TrainerProfilePage  = () => {
-  const { store, actions } = useContext(Context)
+const TrainerProfilePage = () => {
+  const { store, actions } = useContext(Context);
   const { id } = useParams();
 
   useEffect(() => {
     actions.getTrainerInfo(id);
   }, []);
-// }
-console.log("this should be true", sessionStorage.getItem("user_id") === id)
-console.log("this is the id", id)
-console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
-// function TrainerProfilePage() {
+  // }
+  console.log("this should be true", sessionStorage.getItem("user_id") === id);
+  console.log("this is the id", id);
+  console.log("this is the store.user_id", sessionStorage.getItem("user_id"));
+  // function TrainerProfilePage() {
   return (
     <div className="row py-8 px-4">
       <div className="col-xl-8 col-md-8 col-10 mx-auto">
@@ -35,12 +36,15 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                   src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg"
                   alt="..."
                   width="200"
-                  className="rounded mb-2 img-thumbnail profile"
+                  className="mb-2 img-thumbnail profile"
+                  id="profilepic"
                   style={{ borderRadius: "100%" }}
                 />
               </div>
               <div className="media-body mb-5 text-white">
-                <h4 className="mt-0 mb-0 name">{store.trainer.firstname} {store.trainer.lastname}</h4>
+                <h4 className="mt-0 mb-0 name">
+                  {store.trainer.firstname} {store.trainer.lastname}
+                </h4>
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
@@ -66,7 +70,11 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                 role="tab"
                 aria-controls="pills-home"
                 aria-selected="true"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
               >
                 About me
               </button>
@@ -74,36 +82,65 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
             {/* if statement */}
             {sessionStorage.getItem("user_id") == store.trainer.id ? (
               <li className="nav-item" role="presentation">
-              <button
-                className="nav-link"
-                id="pills-contact-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-contact"
-                type="button"
-                role="tab"
-                aria-controls="pills-contact"
-                aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
-              >
-                Availability
-              </button>
-            </li>) : (
+                <button
+                  className="nav-link"
+                  id="pills-contact-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-contact"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-contact"
+                  aria-selected="false"
+                  style={{
+                    backgroundColor: "black",
+                    fontFamily: "roboto",
+                    color: "rgba(252, 60, 5",
+                  }}
+                >
+                  Availability
+                </button>
+              </li>
+            ) : (
               <li className="nav-item" role="presentation">
+                <button
+                  className="nav-link"
+                  id="pills-profile-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-profile"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-profile"
+                  aria-selected="false"
+                  style={{
+                    backgroundColor: "black",
+                    fontFamily: "roboto",
+                    color: "rgba(252, 60, 5",
+                  }}
+                >
+                  Calendar
+                </button>
+              </li>
+            )}
+            
+            <li className="nav-item" role="presentation">
               <button
                 className="nav-link"
-                id="pills-profile-tab"
+                id="contact"
                 data-bs-toggle="pill"
-                data-bs-target="#pills-profile"
+                data-bs-target="#pills-contact-me"
                 type="button"
                 role="tab"
                 aria-controls="pills-profile"
                 aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+                style={{
+                  backgroundColor: "black",
+                  fontFamily: "roboto",
+                  color: "rgba(252, 60, 5",
+                }}
               >
-                Calendar
+                Contact me
               </button>
             </li>
-            )}            
           </ul>
           <div className="tab-content" id="pills-tabContent">
             <div
@@ -141,12 +178,8 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Qualifications </span>: {store.trainer.experience}, {store.trainer.education}.
-                      </p>
-                    </div>
-                    <div className="bio-row">
-                      <p>
-                        <span>Social Media </span>: IG: Johndoe123
+                        <span>Qualifications </span>: {store.trainer.experience}
+                        ,{store.trainer.education}
                       </p>
                     </div>
                   </div>
@@ -159,15 +192,71 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
               id="pills-profile"
               role="tabpanel"
               aria-labelledby="pills-profile-tab"
-              style={{ display: "flex", justifyContent: "center" }}
             >
               <CalendarView />
             </div>
             <div
-              className="tab-pane fade"
+              className="tab-pane fade scroll"
+              id="pills-contact-me"
+              role="tabpanel"
+              aria-labelledby="pills-contact-tab"
+              style={{ height: "500px", overflowY: "auto" }}
+            >
+              <div class="form-main-container">
+                <div class="form-wrapper">
+                  <form class="form-content">
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Name</label>
+                      <input
+                        class="input-style"
+                        type="text"
+                        name="name"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Email Address</label>
+                      <input
+                        class="input-style"
+                        type="email"
+                        name="email"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Subject</label>
+                      <input
+                        class="input-style"
+                        type="text"
+                        name="subject"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Message</label>
+                      <textarea
+                        class="textarea-style"
+                        id="exampleFormControlTextarea1"
+                        rows="5"
+                      ></textarea>
+                      <span class="textarea-style-focus"></span>
+                    </div>
+                    <div class="d-flex w-100">
+                      <button class="button-style">Send</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade scroll"
               id="pills-contact"
               role="tabpanel"
               aria-labelledby="pills-contact-tab"
+              style={{ height: "500px", overflowY: "auto" }}
             >
               <TrainerScheduler />
             </div>
@@ -176,6 +265,6 @@ console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
       </div>
     </div>
   );
-}
+};
 
 export default TrainerProfilePage;

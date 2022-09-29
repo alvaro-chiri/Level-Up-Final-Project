@@ -2,6 +2,12 @@
   border: 1px solid blue;
 } */
 
+#profilepic {
+  border-radius: 100%;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
 .pfpTrainer {
   border-radius: 50%;
   height: auto;
@@ -82,7 +88,9 @@ button:hover {
 }
 
 .bio-graph-info {
-  color: #89817e;
+  color: black;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .bio-graph-info h1 {
@@ -139,6 +147,247 @@ button:hover {
 
 span {
   font-size: 18px;
+}
+
+.txt-style1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0px;
+  color: rgba(252, 60, 5);
+  text-align: center;
+}
+
+/* ============> Form */
+
+.form-main-container {
+  width: 100%;
+  min-height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #39363d;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-wrapper {
+  width: 600px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.form-header {
+  background: "";
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  position: relative;
+  align-items: center;
+  padding: 70px 15px 74px 15px;
+  z-index: 1;
+  flex-wrap: wrap;
+  flex-direction: column;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.form-header::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgb(17 25 29 / 70%);
+}
+
+.form-title {
+  font-family: "Roboto", sans-serif;
+  font-size: 25px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+}
+
+.form-subtitle {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  word-break: break-word;
+}
+
+.form-content {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 40px 80px 40px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ============> Input */
+
+input {
+  outline: none;
+  border: none;
+}
+
+.input-wrapper {
+  width: 100%;
+  position: relative;
+  border-bottom: 1px solid #b2b2b2;
+  margin-bottom: 26px;
+}
+
+.input-style {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: rgba(252, 60, 5);
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  background: transparent;
+  padding: 0 5px;
+}
+
+input.input-style {
+  height: 45px;
+}
+
+.input-style-focus {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.input-style-focus::before {
+  content: "";
+  background: color rgba(252, 60, 5);
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.input-style:focus + .input-style-focus::before {
+  width: 100%;
+}
+
+.has-val.input-style + .input-style-focus::before {
+  width: 100%;
+}
+
+/* ============> Textarea */
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+.textarea-style {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  color: rgba(252, 60, 5);
+  border-color: #555555 !important;
+  display: block;
+  width: 100%;
+  background: transparent;
+  padding: 0 5px;
+}
+
+.textarea-style-focus::before {
+  content: "";
+  background: color rgba(252, 60, 5);
+  display: block;
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+
+  -webkit-transition: all 0.6s;
+  -o-transition: all 0.6s;
+  -moz-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.textarea-style:focus + .textarea-style-focus::before {
+  width: 100%;
+}
+
+.has-val.textarea-style + .textarea-style-focus::before {
+  width: 100%;
+}
+
+/* ============> Button */
+
+button {
+  outline: none !important;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.button-style {
+  height: 50px;
+  width: 150px;
+  background-color: rgba(252, 60, 5);
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  padding: 0 20px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+.button-style:hover {
+  background-color: #333333;
 }
 @import url(https://fonts.googleapis.com/css?family=Righteous);
 @import url(https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,500&display=swap);
