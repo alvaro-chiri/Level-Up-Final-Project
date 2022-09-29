@@ -33,6 +33,7 @@ const TrainerProfilePage = () => {
                   alt="..."
                   width="200"
                   className="mb-2 img-thumbnail profile"
+                  id="profilepic"
                   style={{ borderRadius: "100%" }}
                 />
               </div>
@@ -43,7 +44,7 @@ const TrainerProfilePage = () => {
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
-                  <span className="location">Fort Lauderdale, FL.</span>
+                  <span className="location">{store.trainer.zipcode}</span>
                 </p>
               </div>
             </div>
@@ -109,7 +110,7 @@ const TrainerProfilePage = () => {
                   color: "rgba(252, 60, 5",
                 }}
               >
-                Availiability
+                Availability
               </button>
             </li>
             <li className="nav-item" role="presentation">
@@ -117,7 +118,7 @@ const TrainerProfilePage = () => {
                 className="nav-link"
                 id="contact"
                 data-bs-toggle="pill"
-                data-bs-target="#pills-profile"
+                data-bs-target="#pills-contact-me"
                 type="button"
                 role="tab"
                 aria-controls="pills-profile"
@@ -152,29 +153,24 @@ const TrainerProfilePage = () => {
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Last Name </span>: Doe
+                        <span>Last Name </span>: {store.trainer.lastname}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>City</span>: Fort Lauderdale
+                        <span>Location</span>: {store.trainer.zipcode}
                       </p>
                     </div>
 
                     <div className="bio-row">
                       <p>
-                        <span>Occupation </span>: Personal Trainer
+                        <span>Occupation </span>: {store.trainer.trainertype}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Qualifications </span>: 14 Years experience,
-                        Nutrition.
-                      </p>
-                    </div>
-                    <div className="bio-row">
-                      <p>
-                        <span>Social Media </span>: IG: Johndoe123
+                        <span>Qualifications </span>: {store.trainer.experience}
+                        ,{store.trainer.education}
                       </p>
                     </div>
                   </div>
@@ -189,6 +185,62 @@ const TrainerProfilePage = () => {
               aria-labelledby="pills-profile-tab"
             >
               <CalendarView />
+            </div>
+            <div
+              className="tab-pane fade scroll"
+              id="pills-contact-me"
+              role="tabpanel"
+              aria-labelledby="pills-contact-tab"
+              style={{ height: "500px", overflowY: "auto" }}
+            >
+              <div class="form-main-container">
+                <div class="form-wrapper">
+                  <form class="form-content">
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Name</label>
+                      <input
+                        class="input-style"
+                        type="text"
+                        name="name"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Email Address</label>
+                      <input
+                        class="input-style"
+                        type="email"
+                        name="email"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Subject</label>
+                      <input
+                        class="input-style"
+                        type="text"
+                        name="subject"
+                        required
+                      />
+                      <span class="input-style-focus"></span>
+                    </div>
+                    <div class="input-wrapper">
+                      <label class="txt-style1">Message</label>
+                      <textarea
+                        class="textarea-style"
+                        id="exampleFormControlTextarea1"
+                        rows="5"
+                      ></textarea>
+                      <span class="textarea-style-focus"></span>
+                    </div>
+                    <div class="d-flex w-100">
+                      <button class="button-style">Send</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
             </div>
             <div
               className="tab-pane fade scroll"
