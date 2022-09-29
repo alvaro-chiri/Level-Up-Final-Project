@@ -21,7 +21,6 @@ const timesAm = [
   "10:30am",
   "11:00am",
   "11:30am",
-  "12:00am",
 ];
 const timesPm = [
   "12:00pm",
