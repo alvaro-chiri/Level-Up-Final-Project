@@ -1,5 +1,20 @@
 .pfpNavbar {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
+}
+
+.navbar-brand {
+    display: inline-block;
+    color: #ff3d07;
+    font-family: "Righteous", serif;
+    text-shadow: 0.03em 0.03em 0 rgb(0, 0, 0);
+}
+
+.nav-item {
+    font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+    background-color: #39363d;
 }

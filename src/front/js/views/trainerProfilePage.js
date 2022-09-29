@@ -7,6 +7,7 @@ import { CalendarView } from "../component/calendar";
 import { TrainerScheduler } from "../component/trainerSchedule";
 import { Context } from "../store/appContext";
 
+
 //testing code
 const TrainerProfilePage  = () => {
   const { store, actions } = useContext(Context)
@@ -16,7 +17,9 @@ const TrainerProfilePage  = () => {
     actions.getTrainerInfo(id);
   }, []);
 // }
-
+console.log("this should be true", sessionStorage.getItem("user_id") === id)
+console.log("this is the id", id)
+console.log("this is the store.user_id", sessionStorage.getItem("user_id"))
 // function TrainerProfilePage() {
   return (
     <div className="row py-8 px-4">
@@ -41,7 +44,7 @@ const TrainerProfilePage  = () => {
                 <p className="small mb-4" style={{ margin: "0px" }}>
                   {" "}
                   <i className="fa fa-map-marker mr-2 icon"></i>
-                  <span className="location">Fort Lauderdale, FL.</span>
+                  <span className="location"> {store.trainer.zipcode}</span>
                 </p>
               </div>
             </div>
@@ -68,7 +71,24 @@ const TrainerProfilePage  = () => {
                 About me
               </button>
             </li>
-            <li className="nav-item" role="presentation">
+            {/* if statement */}
+            {sessionStorage.getItem("user_id") == store.trainer.id ? (
+              <li className="nav-item" role="presentation">
+              <button
+                className="nav-link"
+                id="pills-contact-tab"
+                data-bs-toggle="pill"
+                data-bs-target="#pills-contact"
+                type="button"
+                role="tab"
+                aria-controls="pills-contact"
+                aria-selected="false"
+                style={{ backgroundColor: "black", fontFamily: "roboto" }}
+              >
+                Availability
+              </button>
+            </li>) : (
+              <li className="nav-item" role="presentation">
               <button
                 className="nav-link"
                 id="pills-profile-tab"
@@ -83,21 +103,7 @@ const TrainerProfilePage  = () => {
                 Calendar
               </button>
             </li>
-            <li className="nav-item" role="presentation">
-              <button
-                className="nav-link"
-                id="pills-contact-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-contact"
-                type="button"
-                role="tab"
-                aria-controls="pills-contact"
-                aria-selected="false"
-                style={{ backgroundColor: "black", fontFamily: "roboto" }}
-              >
-                Availiability
-              </button>
-            </li>
+            )}            
           </ul>
           <div className="tab-content" id="pills-tabContent">
             <div
@@ -119,24 +125,23 @@ const TrainerProfilePage  = () => {
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Last Name </span>: Doe
+                        <span>Last Name </span>: {store.trainer.lastname}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>City</span>: Fort Lauderdale
+                        <span>Location</span>: {store.trainer.zipcode}
                       </p>
                     </div>
 
                     <div className="bio-row">
                       <p>
-                        <span>Occupation </span>: Personal Trainer
+                        <span>Occupation </span>: {store.trainer.trainertype}
                       </p>
                     </div>
                     <div className="bio-row">
                       <p>
-                        <span>Qualifications </span>: 14 Years experience,
-                        Nutrition.
+                        <span>Qualifications </span>: {store.trainer.experience}, {store.trainer.education}.
                       </p>
                     </div>
                     <div className="bio-row">

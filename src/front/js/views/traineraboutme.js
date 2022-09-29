@@ -26,7 +26,7 @@ export const TrainersProfileInfo = () => {
       }),
     });
     const payload = await response.json();
-    return payload.result, navigate("/trainerprofile");
+    return payload.result, navigate("/");
   }
 
   return (

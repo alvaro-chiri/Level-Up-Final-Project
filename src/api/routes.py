@@ -59,6 +59,21 @@ def get_single_user(user_id):
 #---------------------------------------------------#
 #Post Requests
 @api.route('/user', methods = ['POST'])
+def sample_data_users():
+    request_body_user = request.get_json()
+    new_user = User(
+    firstname = request_body_user['firstname'], 
+    lastname = request_body_user['lastname'],
+    email=request_body_user['email'], 
+    password=ph.hash(request_body_user['password']),
+    zipcode=request_body_user['zipcode'],
+    trainertype=request_body_user['trainertype'],
+    )
+    db.session.add(new_user)
+    db.session.commit()
+    return jsonify(new_user.serialize()), 200
+
+@api.route('/user', methods = ['POST'])
 def create_user():
     request_body_user = request.get_json()
     new_user = User(
@@ -120,4 +135,4 @@ def create_token():
     except:
         return 'failed-auth', 401
     access_token = create_access_token(identity=user.id)
-    return jsonify(access_token=access_token)
+    return jsonify(access_token=access_token, user_id=user.id)

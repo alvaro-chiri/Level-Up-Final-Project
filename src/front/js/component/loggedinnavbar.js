@@ -1,16 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/loggedinnavbar.css";
 import { Context } from "../store/appContext";
 
 export const LoggedInNavbar = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav className="navbar navbar-expand-lg navbar-dark sticky-top">
       <div className="container-fluid">
-        <Link to="/">
-          <span className="navbar-brand">LEVEL UP</span>
+        <Link to="/" style={{textDecoration: "none"}}>
+          <span className="navbar-brand">Level Up</span>
         </Link>
         {/* everything under this are the contents in the navbar, need to add all of the links to other pages still - Alvaro */}
         <div className="d-flex flex-row-reverse bd-highlight">
@@ -27,7 +28,8 @@ export const LoggedInNavbar = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
-              <li className="nav-item">
+              {/* the below is commented out becuase it is not in use */}
+              {/* <li className="nav-item">
                 <a className="nav-link" href="#">
                   User
                 </a>
@@ -36,14 +38,14 @@ export const LoggedInNavbar = () => {
                 <a className="nav-link" href="#">
                   Trainer
                 </a>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <a className="nav-link" href="/search">
                   Search
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/#aboutUs">
                   About Us
                 </a>
               </li>
@@ -74,7 +76,7 @@ export const LoggedInNavbar = () => {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="" onClick={() => navigate(`/trainerprofile/${store.user_id}`)}>
                         Profile
                       </a>
                     </li>
@@ -97,8 +99,8 @@ export const LoggedInNavbar = () => {
                       <hr className="dropdown"></hr>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#"> <button onClick={() => actions.logout()}>
-                        Logout</button>
+                      <a className="dropdown-item" href="/" onClick={() => actions.logout()}>
+                        <b>Logout</b>
                       </a>
                     </li>
                   </ul>
