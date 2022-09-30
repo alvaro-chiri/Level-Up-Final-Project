@@ -179,7 +179,7 @@ const TrainerProfilePage = () => {
                     <div className="bio-row">
                       <p>
                         <span>Qualifications </span>: {store.trainer.experience}
-                        ,{store.trainer.education}
+                        , {store.trainer.education}
                       </p>
                     </div>
                   </div>
